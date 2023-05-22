@@ -1,0 +1,18 @@
+-- local StatusLine = {
+--
+-- }
+--
+-- local WinBar = {
+--
+-- }
+--
+-- local TabLine = {
+--
+-- }
+--
+-- require 'heirline'.setup {
+--     statusline = StatusLine,
+--     windbar = WinBar,
+--     tabline = TabLine,
+--     statuscolumn = {},
+-- }

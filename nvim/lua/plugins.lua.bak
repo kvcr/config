@@ -1,0 +1,93 @@
+vim.cmd([[
+	augroup packer_user_config
+		autocmd!
+		autocmd BufWritePost plugins.lua source <afile> | PackerSync
+	augroup end
+]])
+
+local packer = require 'packer'
+
+packer.init {
+    display = {
+        open_fn = function()
+            return require 'packer.util'.float { border = 'rounded' }
+        end,
+    },
+}
+
+print(vim.fn.getcwd())
+
+return packer.startup(function(use)
+    use 'wbthomason/packer.nvim'
+    use '${XDG_CONFIG_HOME}/kvcr'
+    use 'rktjmp/lush.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-lua/popup.nvim'
+    use 'numToStr/Comment.nvim'
+    use 'williamboman/mason.nvim'
+    -- use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
+
+    -- cmp
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'saadparwaiz1/cmp_luasnip'
+
+    --snippets
+    use 'L3MON4D3/LuaSnip'
+    use 'rafamadriz/friendly-snippets'
+
+    use 'windwp/nvim-autopairs'
+    use 'lukas-reineke/indent-blankline.nvim'
+    use {
+        'folke/trouble.nvim',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('trouble').setup {
+
+            }
+        end,
+    }
+    use 'kdheepak/cmp-latex-symbols'
+    use 'lervag/vimtex'
+    use {
+        'ggandor/leap.nvim',
+        config = {
+            require 'leap'.add_default_mappings()
+        }
+    }
+    use { 'nvim-tree/nvim-web-devicons', opt = true }
+    use {
+        'nvim-lualine/lualine.nvim',
+    }
+    use {
+        'rebelot/heirline.nvim',
+        event = 'UiEnter',
+    }
+    use 'nvim-tree/nvim-tree.lua'
+    use {
+        'Exafunction/codeium.vim',
+        config = function()
+            vim.keymap.set('i', '<C-Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
+        end
+    }
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use({
+        "folke/noice.nvim",
+        config = function()
+            require("noice").setup({
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    })
+end)
