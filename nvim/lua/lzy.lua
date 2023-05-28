@@ -20,7 +20,13 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim',
     'nvim-lua/popup.nvim',
     'numToStr/Comment.nvim',
-    'williamboman/mason.nvim',
+    {
+        'williamboman/mason.nvim',
+        build = ':MasonUpdate',
+        config = function()
+            require 'mason'.setup()
+        end
+    },
     -- 'williamboman/mason-lspconfig.nvim'
     'neovim/nvim-lspconfig',
 
