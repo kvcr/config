@@ -1,3 +1,6 @@
+local M = {}
+
+M.config = function()
 require 'nvim-tree'.setup {
     sort_by = 'case_sensitive',
     renderer = {
@@ -8,3 +11,6 @@ require 'nvim-tree'.setup {
     },
 }
 
+end
+
+return M

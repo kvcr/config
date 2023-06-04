@@ -1,7 +1,10 @@
+local M = {}
+
+M.config = function()
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 
-require 'luasnip.loaders.from_vscode'.lazy_load({ paths = '~/.local/share/nvim/lazy/friendly-snippets' })
+require 'luasnip.loaders.from_vscode'.lazy_load()
 
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -55,3 +58,6 @@ cmp.setup {
         { name = 'path' },
     }
 }
+end
+
+return M

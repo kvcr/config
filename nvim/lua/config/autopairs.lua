@@ -1,7 +1,11 @@
+local M = {}
+
+M.config = function()
+
 local npairs = require 'nvim-autopairs'
 local Rule = require 'nvim-autopairs.rule'
 
-local brackets = { { '(', ')' },  { '[', ']' }, { '{', '}' } }
+local brackets = { { '(', ')' },  { '[', ']' }, { '{', '}' }, { '<', '>' } }
 
 npairs.setup {}
 
@@ -27,3 +31,6 @@ for _, bracket in pairs(brackets) do
         :use_key(bracket[2])
     }
 end
+end
+
+return M

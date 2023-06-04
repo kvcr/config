@@ -16,22 +16,22 @@ require("lazy").setup({
     { dir = '~/.config/nvim/kvcr/' },
     'rktjmp/lush.nvim',
     'nvim-lua/plenary.nvim',
-    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate' },
-    'nvim-telescope/telescope.nvim',
+    { 'nvim-treesitter/nvim-treesitter', cmd = 'TSUpdate', config = function() require'config.treesitter'.config() end },
+    {'nvim-telescope/telescope.nvim', config = function() require'config.telescope'.config() end},
     'nvim-lua/popup.nvim',
-    'numToStr/Comment.nvim',
+    {'numToStr/Comment.nvim', config = function() require'config.comment'.config() end},
     {
         'williamboman/mason.nvim',
         build = ':MasonUpdate',
         config = function()
-            require 'mason'.setup()
+            require 'config.mason'.config()
         end
     },
     -- 'williamboman/mason-lspconfig.nvim'
-    'neovim/nvim-lspconfig',
+    { 'neovim/nvim-lspconfig', config = function() require'config.lsp'.config() end },
 
     -- cmp
-    'hrsh7th/nvim-cmp',
+    {'hrsh7th/nvim-cmp', config = function() require'config.cmp'.config() end},
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-buffer',
@@ -43,8 +43,9 @@ require("lazy").setup({
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
 
-    'windwp/nvim-autopairs',
-    'lukas-reineke/indent-blankline.nvim',
+    {'kylechui/nvim-surround', config = function() require'config.surround'.config() end},
+    { 'windwp/nvim-autopairs', config = function() require'config.autopairs'.config() end },
+    { 'lukas-reineke/indent-blankline.nvim', config = function() require'config.indent'.config() end },
     {
         'folke/trouble.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
@@ -63,20 +64,21 @@ require("lazy").setup({
         end,
     },
     { 'nvim-tree/nvim-web-devicons', opt = true },
-    { 'nvim-lualine/lualine.nvim', },
+    { 'nvim-lualine/lualine.nvim', config = function() require'config.lualine'.config() end },
     {
         'rebelot/heirline.nvim',
         event = 'UiEnter',
     },
-    'nvim-tree/nvim-tree.lua',
+    { 'nvim-tree/nvim-tree.lua', config = function() require'config.tree'.config() end },
     {
         'Exafunction/codeium.vim',
         -- config = function()
         --     vim.keymap.set('i', '<C-Tab>', function() return vim.fn['codeium#Accept']() end, { expr = true })
         -- end
     },
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
+    {'mfussenegger/nvim-dap', config = function() require'config.dap'.config() end},
+    {'rcarriga/nvim-dap-ui', config = function() require'config.dapui'.config() end},
+    {"rcarriga/nvim-notify", config = function() require'config.notify'.config() end},
     {
         "folke/noice.nvim",
         config = function()
@@ -85,7 +87,7 @@ require("lazy").setup({
         end,
         dependencies = {
             "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
         }
-    }
+    },
+    'folke/neodev.nvim'
 })

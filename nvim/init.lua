@@ -1,4 +1,5 @@
 require 'options'
+require 'keymap'
 require 'keymaps'
 require 'lzy'
 
@@ -18,3 +19,5 @@ require 'lzy'
 --
 
 vim.cmd "colorscheme kvcr"
+vim.cmd "highlight Normal guibg=NONE ctermbg=NONE"
+vim.cmd "highlight NonText guibg=NONE ctermbg=NONE"
